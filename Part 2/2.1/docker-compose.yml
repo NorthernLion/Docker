@@ -1,0 +1,21 @@
+version: '3' 
+
+services: 
+    frontend:  
+      image: onefive
+      build: ../../Part 1/1.5/frontend-example-docker
+      container_name: frontend
+      ports:
+        - 5000:5000
+      environment:
+        - API_URL=http://localhost:8000
+    backend:  
+      image: onesix
+      build: ../../Part 1/1.6/backend-example-docker
+      volumes: 
+        - ./logs.txt:/mydir/logs.txt
+      container_name: backend
+      ports:
+        - 8000:8000
+      environment:
+        - FRONT_URL=http://localhost:5000
