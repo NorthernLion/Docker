@@ -1,0 +1,13 @@
+3 container running detached:
+
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                         PORTS               NAMES
+29dc5c01ac3c        nginx               "nginx -g 'daemon of…"   4 seconds ago       Up 2 seconds                   80/tcp              vigilant_cohen
+8f2d5e7bdb71        nginx               "nginx -g 'daemon of…"   8 seconds ago       Up 6 seconds                   80/tcp              nostalgic_ptolemy
+83e38bcf43cb        nginx               "nginx -g 'daemon of…"   11 seconds ago      Up 9 seconds                   80/tcp              sleepy_fermi
+
+docker ps -a after stopping the 2
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                         PORTS               NAMES
+83e38bcf43cb        nginx               "nginx -g 'daemon of…"   4 minutes ago       Up 4 minutes                   80/tcp              sleepy_fermi
+
