@@ -1,0 +1,29 @@
+version: '3' 
+
+services: 
+    redis:  
+      image: redis
+      container_name: cache
+      ports:
+        - 6379:6379
+    frontend:  
+      image: onefive
+      build: ../../Part 1/1.5/frontend-example-docker
+      container_name: frontend
+      ports:
+        - 5000:5000
+      environment:
+        - API_URL=http://localhost:8000
+    backend:  
+      image: onesix
+      build: ../../Part 1/1.6/backend-example-docker
+      volumes: 
+        - ./logs.txt:/mydir/logs.txt
+      links:
+        - redis
+      container_name: backend
+      ports:
+        - 8000:8000
+      environment:
+        - FRONT_URL=http://localhost:5000
+        - REDIS=redis
