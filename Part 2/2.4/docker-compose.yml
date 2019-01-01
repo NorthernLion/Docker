@@ -1,0 +1,29 @@
+version: '3' 
+
+services: 
+    training:
+      image: training      
+      container_name: postgres
+      build: ./ml-kurkkumopo-training-master
+      volumes: 
+        - model:/src/model
+        - imgs:/src/imgs
+        - data:/src/data
+    frontend:  
+      image: frontendml
+      build: ./ml-kurkkumopo-frontend-master
+      container_name: frontendml
+      ports:
+        - 3000:3000
+    backend:  
+      image: backendml
+      build: ./ml-kurkkumopo-backend-master
+      container_name: backendml
+      ports:
+        - 5000:5000
+      volumes: 
+        - model:/src/model
+volumes: 
+   data:
+   imgs:
+   model:
