@@ -1,5 +1,6 @@
 FROM ubuntu:16.04 
 
+
 WORKDIR /back
 
 COPY . .
@@ -10,11 +11,11 @@ RUN apt-get update && apt-get install -y \
   apt install -y nodejs && \
   npm install && \
   apt-get purge -y --auto-remove curl && \ 
-  rm -rf /var/lib/apt/lists/* 
+  rm -rf /var/lib/apt/lists/* && \
+  useradd -m app 
 
 EXPOSE 8000
 
 ENV FRONT_URL=http://localhost:5000
-
 
 CMD npm start
