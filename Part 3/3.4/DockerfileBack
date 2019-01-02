@@ -1,0 +1,19 @@
+FROM node:6-alpine
+
+COPY . ./back
+
+WORKDIR /back
+
+RUN npm install && \
+  rm -rf /var/lib/apt/lists/*  \
+  && deluser --remove-home node \
+  && adduser -D node \
+  && chown -R node:node /back
+
+EXPOSE 8000
+
+USER node
+
+ENV FRONT_URL=http://localhost:5000
+
+CMD npm start

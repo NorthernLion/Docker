@@ -1,0 +1,19 @@
+FROM node:8-alpine
+
+COPY . ./front
+
+WORKDIR /front
+
+ENV API_URL=http://localhost:8000
+
+RUN npm install && \
+  rm -rf /var/lib/apt/lists/*  \
+  && deluser --remove-home node \
+  && adduser -D node \
+  && chown -R node:node /front
+
+EXPOSE 5000
+
+USER node
+
+ENTRYPOINT npm start
