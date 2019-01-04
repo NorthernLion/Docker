@@ -1,0 +1,17 @@
+jasperli/weather    latest              c4ea84706013        6 days ago          311MB
+
+
+veather             latest              abbfb6fdb402        2 minutes ago       96.9MB
+
+This is the docker file from 1.8. Please for info about older dockerfile look into 1.8.
+
+
+In 3.5 I used as a base node:8-alpine, removed unneeded lists removed default user created new one and gave it ownership of the code running in the container.
+
+To build the image you self:
+
+1. git clone git@github.com:NorthernLion/WeatherWatch.git
+2. cd WeatherWatch
+--- Copy paste the Docker file from task into here ---
+3. docker build -t vether .
+4. docker run -p 3001:3001 vether
