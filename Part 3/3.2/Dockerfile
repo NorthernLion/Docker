@@ -2,10 +2,13 @@ FROM ubuntu:16.04
 
 
 RUN apt-get update && \
-    apt-get install -y wget ffmpeg python3-pip python3-crypto python3-requests python3-lxml php-cli php-bcmath php-xml php-curl && \
-    pip3 install --user --upgrade yle-dl
+    apt-get install -y wget ffmpeg python3 python3-pip python3-setuptools python3-crypto python3-requests python3-lxml && \
+    pip3 install yle-dl && \
+    rm -rf /var/lib/apt/lists/* 
 
-WORKDIR /areena
+WORKDIR /app
 
-CMD ["/bin/bash"]
+ENV LC_ALL=C.UTF-8 
+
+ENTRYPOINT ["yle-dl"]
 
