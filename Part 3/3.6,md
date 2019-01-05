@@ -1,0 +1,10 @@
+## 3.6 b
+
+Docker is a tool beneficial mostly for devops situations. Much like other software tools its main power is active and respected community behind it. As a result, Docker hub already has many well optimized images of often used environments.
+
+A Docker container is guaranteed to be ran the same way on every system if new enough version of Docker is installed on the system. This means the often heard “runs fine on my computer” is a thing of the past. In addition, containers are isolated in the same system helping with conflicts such as running legacy code in a modern system. Isolation leads to some security benefits as well.
+
+Using Docker is not always the best idea. Docker images can only be running when docker is installed and requiring every one of your customers to have docker installed is not possible. This is possible if you have sudo access on every system your software ran in but even in such case there are many drawbacks. Docker on its own is not capable of running in different systems and creating a unified cluster. Also, performance of Docker images in production is not as good as having the system specially setup for running the software.
+
+In my own opinion docker is best used in development of the software when coders are having different OS and hardware. If we have React frontend, NodeJS Backend and PostGres DB configuring every tool to be the same on everyone’s computer is a pain. With npm it is possible to install dependencies globally in which case having different version for a project is next to impossible. PostGres admin access info, DB names etc. might be different for different people. If you were simply to use Docker all you would need to do is create the image for the project. Create the container and do the developing inside the container.
+
